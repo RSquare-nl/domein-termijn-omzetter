@@ -1,6 +1,26 @@
-php-epp-client
+domain-termijn-omzetter
 ==============
 
+Dit project is bedoelt voor de kleinere registrars die eenvoudig hun domeinnamen op een andere factuur termijn (periode) willen zetten.
+
+
+De installatie bestaat uit een paar stappen:
+
+1) Hernoem het bestand auth_example.php naar auth.php en vul de onbrekende gegevens aan
+
+2) Lees de Domain Handles csv in van sidn met alle domeinnamen.
+
+3) Pak hem uit hernoem hem naar domain_handles.csv en zet hem in de directory waar ook de show.php file staat
+
+4) Draai het script update.php op de commandline, het kan ook via de browser als het aantal domeinen beperkt is.
+    Dit script zal de file domain_period.csv aanmaken.
+
+
+
+Dit project is een fork van metaregistrar/php-epp-client te vinden op https://github.com/metaregistrar/php-epp-client
+De epp laag wordt gebruikt voor de communicatie met SIDN
+
+----
 Object-oriented PHP EPP Client
 
 Welcome to the object-oriented EPP client in PHP project. 
@@ -19,6 +39,4 @@ This code will provide you with a fully functional EPP client to connect to any 
 All code is organized in objects, so connecting to a new registry is just a matter of object re-use and extension.
 
 Sample registry connections are provided in the Registries directory.
-
-Sample domain check an domain create scripts are provided in checkdomain.php and registerdomain.php
 
