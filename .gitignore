@@ -1,2 +1,4 @@
 /nbproject/private/
-/Registries/IIS/cert/
+/Registries/IIS/cert/domain_handles.csv
+domain_period.csv
+auth.php
