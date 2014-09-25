@@ -10,42 +10,32 @@ include_once('sidnEppConnection.php');
 
 // Base EPP commands: hello, login and logout
 include_once('base.php');
+include_once "functions.php";
 
-$file='domain_handles.csv';
-$filesave='domain_period.csv';
+$CSVFilename='domain_order_frequency.csv';
 
-print "Dit script zet de domain_handles.csv om in domain_period.csv <br>\n";
 print "Dit script is bedoeld om op de commandline gedraaid te worden.<br>\n";
 print "vb: php update.php<br>\n";
+
+$domains=readCsvDomainPeriod($CSVFilename);
 
 try
 {
     $conn = new sidnEppConnection(true);
 
     // Connect to the EPP server
-    if ($conn->connect())
-    {
-        if (login($conn))
-        {
-
-			  $f = fopen($file, 'r');
-			  $s = fopen($filesave, 'w');
-			  $counter=0;
-			  while ( ($line = fgets($f)) !== false ) { //Lees de file in regel voor regel
-				  if($counter){ //Sla de eerste regel over
-					  $pos=strpos($line,';');
-					  $domainname=trim(substr($line,0,$pos),'"'); //Haal alleen de domeinnaam eruit
-					  print "$domainname<br>\n";
-					  flush();
-					  $result=getDomainPeriod($conn, $domainname);
-					  $newline=$domainname.','.$result['period'].','.$result['creationdate']."\n";
-					  fwrite($s,$newline);
-					  //break;
+    if ($conn->connect()){
+        if (login($conn)){
+			  if(is_array($domains)){
+				  foreach($domains as $period){
+					  foreach($period as $dates){
+						  foreach($dates as $domainname){
+							  $result=getDomainPeriod($conn, $domainname);
+							  writeCsvDomainPeriod($CSVFilename,$domainname,$result['period']);
+						  }
+					  }
 				  }
-				  $counter++;
 			  }
-			  fclose($f);
-			  fclose($s);
 			  logout($conn);
 		  }
 	 }else{
@@ -58,29 +48,5 @@ catch (eppException $e)
 }
 
 
-
-function getDomainPeriod($conn, $domainname)
-{
-	try
-	{
-		$epp = new eppDomain($domainname);
-		$info = new eppInfoDomainRequest($epp);
-		if ((($response = $conn->writeandread($info)) instanceof eppInfoDomainResponse) && ($response->Success()))
-		{
-			$result['period']= $response->getDomainPeriod();
-			$result['creationdate']= $response->getDomainCreateDate();
-			return $result;
-		}
-		else
-		{
-			echo "ERROR2\n";
-		}
-	}
-	catch (eppException $e)
-	{
-		echo 'ERROR1';
-		echo $e->getMessage()."\n";
-	}
-}
 
 ?>
