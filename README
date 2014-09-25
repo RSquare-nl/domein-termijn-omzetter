@@ -6,14 +6,16 @@ Dit project is bedoelt voor de kleinere registrars die eenvoudig hun domeinnamen
 
 De installatie bestaat uit een paar stappen:
 
+
 1) Hernoem het bestand auth_example.php naar auth.php en vul de onbrekende gegevens aan
 
-2) Lees de Domain Handles csv in van sidn met alle domeinnamen.
+2) Lees de Domain order frequency csv in van sidn met alle domeinnamen. Deze is te vinden op: https://www.sidn.nl/registrars/mijn-sidn/rapportages/drs-rapportages/ 
 
-3) Pak hem uit hernoem hem naar domain_handles.csv en zet hem in de directory waar ook de show.php file staat
+3) Pak hem uit, hernoem hem naar domain_oder_frequency.csv en zet hem in de directory waar ook de show.php file staat
 
-4) Draai het script update.php op de commandline, het kan ook via de browser als het aantal domeinen beperkt is.
-    Dit script zal de file domain_period.csv aanmaken.
+4) Zorg dat de webserver het bestand domain_oder_frequency.csv mag lezen en schrijven.
+
+5) Begin met de Domein termijn omzetten
 
 
 

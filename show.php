@@ -4,7 +4,7 @@ print '<html>';
 print '<link rel="stylesheet" href="style.css" type="text/css">';
 print '<body>';
 
-$CSVFilename='domain_period.csv';
+$CSVFilename='domain_order_frequency.csv';
 
 include "functions.php";
 
@@ -20,7 +20,6 @@ if(isset($_POST['submit'])){
 
 //Lees Domeinlijst in
 $domains=readCsvDomainPeriod($CSVFilename);
-
 //print_r($domains);
 
 print '<div id="wrapper">';

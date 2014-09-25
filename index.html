@@ -5,14 +5,13 @@
 
 		<p>Basis systeem<br>
 		<br>
-		De csv met domeinnamen waarbij de periode inbegrepen zit is nog niet beschikbaar, daardoor moeten we een tussen stap doen.<br>
 		De stappen die we moeten doorlopen om het geheel werkend te krijgen zijn:<br><br>
 		1) Hernoem het bestand <strong>auth_example.php</strong> naar <strong>auth.php</strong> en vul de onbrekende gegevens aan<br><br>
-		2) Lees de <strong>Domain Handles</strong> csv in van sidn met alle domeinnamen.<br><br>
-		3) Pak hem uit hernoem hem naar <strong>domain_handles.csv</strong> en zet hem in de directory waar ook de show.php file staat<br><br>
-		4) Draai het script update.php op de commandline, het kan ook via de browser als het aantal domeinen beperkt is.<br>&nbsp;&nbsp;&nbsp;&nbsp;Dit script zal de file domain_period.csv aanmaken.<br>
+		2) Lees de <strong>Domain order frequency</strong> csv in van sidn met alle domeinnamen. Deze is te vinden op: https://www.sidn.nl/registrars/mijn-sidn/rapportages/drs-rapportages/ <br><br>
+		3) Pak hem uit, hernoem hem naar <strong>domain_oder_frequency.csv</strong> en zet hem in de directory waar ook de show.php file staat<br><br>
+		4) Zorg dat de webserver het bestand <strong>domain_oder_frequency.csv</strong> mag lezen en schrijven.<br><br>
+		5) <a href="show.php">Begin met de <strong>Domein termijn omzetten</strong></a><br>
 		</p>
-		<p><a href="show.php">Begin met de <strong>Domein termijn omzetten</strong></a></p>
 
 		<br><br>
 		Met dank aan metaregistrar voor hun handige php-epp-client

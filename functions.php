@@ -42,13 +42,16 @@ function getDomainPeriod($conn, $domainname)
  **/
 function readCsvDomainPeriod($filename){
 	$f = fopen($filename, 'r');
+	$skip=2;
+	$count=0;
 	while ( ($line = fgets($f)) !== false ) { //Lees de file in regel voor regel
-			$pos=strpos($line,',');
-			$pos2=strpos($line,',',$pos+1);
-			$domainname=substr($line,0,$pos); //Haal de domeinnaam eruit
-			$period=trim(substr($line,$pos+1,$pos2-$pos-1)); //Haal de domeinnaam eruit
-			$creationdate=trim(substr($line,$pos2+1)); //Haal de domeinnaam eruit
+		if($count++>=$skip){//Skip first lines in the csvfile
+			$items=explode(';',$line);
+			$domainname=$items[0]; //Haal de domeinnaam eruit
+			$period=$items[2]; //Haal de termijn eruit
+			$creationdate=$items[3]; //Haal de volgende factuur datum eruit
 			$result[$period][$creationdate][]=$domainname;
+		}
 	}
 	fclose($f);
 	return $result;
@@ -100,10 +103,10 @@ function changeDomainPeriod($domainname,$period){
 function writeCsvDomainPeriod($CSVFilename,$domainname,$period){
 	$f = fopen($CSVFilename, 'r');
 	while ( ($line = fgets($f)) !== false ) { //Lees de file in regel voor regel
-		if(strpos($line,$domainname.',')!==false){
-			$pos=strpos($line,',');
-			$pos2=strpos($line,',',$pos+1);
-			$line=substr_replace($line,$period,$pos+1,$pos2-$pos-1);
+		if(strpos($line,$domainname.';')!==false){
+			$items=explode(';',$line);
+			$items[2]=$period;
+			$line=implode(';',$items);
 		}
 		$domains[]=$line;
 	}
