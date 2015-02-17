@@ -27,9 +27,6 @@ print '<div id="header">';
 if (!file_exists('auth.php')){
 	print "<h2>Error: auth.php niet gevonden, ga naar home voor installatie uitleg</h2>";
 }
-if (!file_exists('domain_period.csv')){
-	print "<h2>Error: domain_period.csv niet gevonden, ga naar home voor installatie uitleg</h2>";
-}
 include 'menu.html';
 print '</div>';
 print '<div id="content">';
