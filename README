@@ -11,9 +11,9 @@ De installatie bestaat uit een paar stappen:
 
 2) Lees de Domain order frequency csv in van sidn met alle domeinnamen. Deze is te vinden op: https://www.sidn.nl/registrars/mijn-sidn/rapportages/drs-rapportages/ 
 
-3) Pak hem uit, hernoem hem naar domain_oder_frequency.csv en zet hem in de directory waar ook de show.php file staat
+3) Pak hem uit, hernoem hem naar domain_order_frequency.csv en zet hem in de directory waar ook de show.php file staat
 
-4) Zorg dat de webserver het bestand domain_oder_frequency.csv mag lezen en schrijven.
+4) Zorg dat de webserver het bestand domain_order_frequency.csv mag lezen en schrijven.
 
 5) Begin met de Domein termijn omzetten
 
