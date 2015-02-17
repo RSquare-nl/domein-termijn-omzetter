@@ -8,6 +8,9 @@ De installatie bestaat uit een paar stappen:
 
 
 1) Hernoem het bestand auth_example.php naar auth.php en vul de onbrekende gegevens aan
+   SIDNUSERNAME is de usernaam zonder de dru, dus alleen het getal
+   SIDNHOSTNAME is ssl://drs.domain-registry.nl
+   SIDNPORT moet 700 zijn.
 
 2) Lees de Domain order frequency csv in van sidn met alle domeinnamen. Deze is te vinden op: https://www.sidn.nl/registrars/mijn-sidn/rapportages/drs-rapportages/ 
 
